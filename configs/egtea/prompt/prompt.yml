@@ -1,0 +1,36 @@
+
+model:
+    pretrain: checkpoints/pt/TSF-B/lavila_best.pth
+    freeze_vis_backbone: true
+    freeze_txt_backbone: true
+    text_prompt:
+        n_ctx: 8
+    visual_prompt:
+        num_layers: 12
+        prompt_dim: 768
+        num_tokens: 128
+        deep: true
+        deep_shared: false
+        split_st: false
+        pt_spt: true
+        pt_tmp: false
+        style: default
+
+data:
+    dataset: egtea
+    root: /data/EGTEA/cropped_clips
+    metadata: /data/EGTEA/train_split1.txt
+    metadata_val: /data/EGTEA/test_split1.txt
+    clip_length: 16
+    clip_stride: 2
+
+training:
+    lr: 0.01
+    batch_size: 4
+    epoch: 10
+    use_checkpoint: true
+    save_freq: 10
+    eval_freq: 1
+
+exp: prompt/sp1_vop
+

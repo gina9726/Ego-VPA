@@ -1,0 +1,24 @@
+
+model:
+    pretrain: checkpoints/pt/TSF-B/lavila_epo1.pth
+    freeze_vis_backbone: false
+    freeze_txt_backbone: false
+
+data:
+    dataset: charades_ego
+    root: /data/CharadesEgo/CharadesEgo_v1_480
+    metadata: /data/CharadesEgo/CharadesEgo/metadata_filtered_train.pkl # all the training data
+    metadata_val: /data/CharadesEgo/CharadesEgo/CharadesEgo_v1_test_only1st.csv
+    clip_length: 16
+    sparse_sample: true
+
+training:
+    lr: 0.00001
+    batch_size: 4
+    epoch: 10
+    use_checkpoint: true
+    save_freq: 10
+    eval_freq: 1
+
+exp: ft/ft
+

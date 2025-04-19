@@ -1,0 +1,49 @@
+
+model:
+    pretrain: ""
+    resume: ""
+    timesformer_freeze_space: false
+    drop_path_rate: 0.1
+    dropout_ratio: 0.5
+    freeze_vis_backbone: false
+    freeze_txt_backbone: false
+    use_vn_classifier: false
+
+data:
+    dataset: ek100_mir
+    root: datasets/EK100/video_ht256px
+    metadata: datasets/EK100/epic-kitchens-100-annotations/retrieval_annotations/EPIC_100_retrieval_train.csv
+    metadata_val: datasets/EK100/epic-kitchens-100-annotations/retrieval_annotations/EPIC_100_retrieval_test.csv
+    relevancy_path: datasets/EK100/epic-kitchens-100-annotations/retrieval_annotations/relevancy/caption_relevancy_EPIC_100_retrieval_test.pkl
+    clip_length: 16
+    clip_stride: 4
+    sparse_sample: false
+    num_crops: 1
+    num_clips: 1
+
+training:
+    lr: 0.00001
+    fix_lr: false
+    lr_start: 0.000001
+    lr_end: 0.00001
+    lr_multiplier_on_backbone: 0.1
+    batch_size: 4
+    epoch: 10
+    warmup_epochs: 1
+    start_epoch: 0
+    freeze_temperature: false
+    clip_grad_type: norm
+    clip_grad_value: ""
+    update_freq: 1
+    wd: 0.01
+    betas: [0.9, 0.999]
+    eps: 0.00000001
+    save_freq: 10
+    eval_freq: 1
+    disable_amp: false
+    use_zero: false
+    use_sgd: false
+    use_checkpoint: true
+    label_smoothing: 0.1
+    find_unused_parameters: false
+

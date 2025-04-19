@@ -1,0 +1,36 @@
+
+model:
+    pretrain: checkpoints/pt/TSF-B/lavila_best.pth
+    freeze_vis_backbone: true
+    freeze_txt_backbone: true
+    text_prompt:
+        n_ctx: 8
+    visual_prompt:
+        num_layers: 12
+        prompt_dim: 768
+        num_tokens: 128
+        deep: true
+        deep_shared: false
+        split_st: false
+        pt_spt: true
+        pt_tmp: false
+        style: default
+
+data:
+    dataset: ek100_mir
+    root: /data/EK100/video_ht256px
+    metadata: /data/EK100/epic-kitchens-100-annotations/retrieval_annotations/EPIC_100_retrieval_train.csv
+    metadata_val: /data/EK100/epic-kitchens-100-annotations/retrieval_annotations/EPIC_100_retrieval_test.csv
+    relevancy_path: /data/EK100/epic-kitchens-100-annotations/retrieval_annotations/relevancy/caption_relevancy_EPIC_100_retrieval_test.pkl
+    clip_length: 16
+
+training:
+    lr: 0.001
+    batch_size: 4
+    epoch: 10
+    use_checkpoint: true
+    save_freq: 10
+    eval_freq: 1
+
+exp: prompt/vop
+
